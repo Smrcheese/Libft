@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 22:35:01 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/06 15:18:50 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:47:33 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int i);
 int		ft_toupper(int i);
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif
