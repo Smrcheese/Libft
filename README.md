@@ -33,4 +33,4 @@ This repository is not meant to be a replacement for your own work. Please do no
 - **Do your mains!** The **Libft** project is a great opportunity to practice writing your own main functions. Writing your own main functions will help you understand how the functions you write work and how to use them. It will also help you debug your code and ensure that it is working properly.
 
 - **stuck? compare your code to thers** If you are stuck on a particular function, try comparing your code to the code provided in this repository [or others!](https://github.com/search?q=libft&type=repositories). This will help you understand the function better and may even help you find a solution to your problem.
-if you're still stuck i recommend you check [this libft repo](https://github.com/faleite/42_libft) by [@faleite](https://github.com/faleite).
+if you're still stuck i recommend you check [this awesome libft repo](https://github.com/faleite/42_libft) by the peer [@faleite](https://github.com/faleite).
