@@ -20,3 +20,6 @@ In the **Libft** project, you will embark on a journey to recode several functio
 
 Feel free to explore this repository to access the code and documentation for the **Libft** project. If you have any questions or need assistance, don't hesitate to reach out. Good luck with your studies at 42! 🚀
 
+### Disclaimer <a name = "disclaimer"></a>
+
+This repository is not meant to be a replacement for your own work. Please do not copy any of the code or documentation provided in this repository. Doing so will only hurt yourself and your development as a programmer. this is meant to serve as inspiration to write your own code and to help you understand the project better by comparing the code you have written to the code provided in this repository, specially if you are stuck on a particular function.
