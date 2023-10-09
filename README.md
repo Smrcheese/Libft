@@ -12,9 +12,6 @@ libft - Your Essential C Library!
 ## About <a name = "about"></a>
 
 **Libft** is a fundamental project that serves as a cornerstone for your journey as a student at [42](https://www.42network.org). My name is Samir Mercado, and I go by the username **smrcheese** on the 42 intra or **@sezequie** on other platforms.
-
-## About 42
-
 [42](https://www.42network.org) is a renowned coding school known for its unique pedagogy, which emphasizes project-based learning and peer-to-peer evaluation. The **Libft** project is your very first challenge at 42, designed to lay the foundation for your programming skills and understanding of the C standard library.
 
 ## Project Overview
