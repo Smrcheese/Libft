@@ -12,18 +12,18 @@
 
 #include "libft.h"
 // Adds the element ’new’ at the end(tail) of the list.
-void	ft_lstadd_back(t_list **list, t_list *newvalue)
+void	ft_lstadd_back(t_list **lst, t_list *newvalue)
 {
-	t_list	*n;
+	t_list	*ptrlst;
 
-	if (list && newvalue)
+	if (lst && newvalue)
 	{
-		if (!*list)
-			*list = newvalue;
+		if (!*lst)
+			*lst = newvalue;
 		else
 		{
-			n = ft_lstlast(*list);
-			n->next = newvalue;
+			ptrlst = ft_lstlast(*lst);
+			ptrlst->next = newvalue;
 		}
 	}
 }
