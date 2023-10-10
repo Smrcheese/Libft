@@ -44,3 +44,8 @@ This repository is not meant to be a replacement for your own work. Please do no
 - **stuck? compare your code to thers**
 If you are stuck on a particular function, try comparing your code to the code provided in this repository [or others!](https://github.com/search?q=libft&type=repositories). This will help you understand the function better and may even help you find a solution to your problem.
 if you're still stuck i recommend you check [this awesome libft repo](https://github.com/faleite/42_libft) by the peer [@faleite](https://github.com/faleite).
+<br>
+
+<div style="text-align:center">
+	<img src="https://www.42network.org/wp-content/uploads/2021/04/42-Lisboa@3x-420x140.png">
+</div>
