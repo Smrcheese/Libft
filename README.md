@@ -1,4 +1,4 @@
-![42 logo](https://www.42network.org/wp-content/themes/e42-network/img/42-network-logo.svg)
+<img src="https://www.42network.org/wp-content/themes/e42-network/img/42-network-logo.svg" style="background-color: #FFFFFF; border: 5px solid #ffffff;">
 # Libft ![42](https://gitlab.com/uploads/-/system/project/avatar/39031552/42_LibC.png?width=20) 
 ![C](https://img.shields.io/badge/Language-C-blue) ![42](https://img.shields.io/badge/42-Cursus-black)
 
