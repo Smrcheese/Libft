@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/11 17:04:00 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:15:31 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ int *menudisplay(char *input, int *page)
 	}
 	printf("\nnext - Next page\n");
 	printf("prev - Previous page\n");
-	printf("exit - Exit program\n");
+	printf("exit - Exit program\n\n");
 	choiseindex[0] = intedinput;
 	choiseindex[1] = *page;
 	if (invflag == 1)
-		printf("\033[0;31mSomething went wrong!!\nPerhaps invalid input or you're at the limit of the page!\033[0;37m\n");
+		printf("\033[0;31mSomething went wrong!!\nPerhaps invalid input or you're at the limit of the page!\033[0;37m\n\n");
 	return (choiseindex);
 }
 
@@ -77,13 +77,16 @@ int main(void)
 	
 	page = 1;
 	printf("\033[0;32m                Welcome to the Libft Tester!\n");
-	printf("\033[0;32m              Please select a function to test:\033[0;37m\n");
+	printf("\033[0;32m              Please select a function to test\033[0;37m:\n");
 	choice = menudisplay("Starting", &page);
+	printf("\033[0;32m_>\033[0;37m");
 	scanf("%s", input);
+	printf("\n");
 	while (1)
 	{
 		system("clear");
 		choice = menudisplay(input, &page);
+		printf("\033[0;32m_>\033[0;37m");
 		scanf("%s", input);
 		free(choice);
 	}
