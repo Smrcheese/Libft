@@ -6,23 +6,19 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:23:20 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:04:00 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./src/libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int *menudisplay(char *input, int *page)
 {
-	char	**functions;
-	int		*choiseindex;
-	int		intedinput;
-	int		i;
-	int		j;
-	
-	i = 0;
-	j = 10;
-	functions = {"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
+	char	*functions[] = 
+	{"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
 	"ft_isalpha", "ft_isascii", "ft_isdigit", "ft_isprint",
 	"ft_itoa", "ft_memccpy", "ft_memchr", "ft_memcmp", "ft_memcpy",
 	"ft_memmove", "ft_memset", "ft_putchar_fd", "ft_putendl_fd",
@@ -30,47 +26,66 @@ int *menudisplay(char *input, int *page)
 	"ft_strjoin", "ft_strlcat", "ft_strlcpy", "ft_strlen", "ft_strmapi",
 	"ft_strncmp", "ft_strnstr", "ft_strrchr", "ft_strtrim", "ft_substr",
 	"ft_tolower", "ft_toupper"};
-	if (input == "next")
-		page++;
-	else if (input == "prev")
-		page--;
-	else if (input == "exit")
+	int		intedinput;
+	int		i;
+	int		j;
+	int		*choiseindex = (int *)malloc(2 * sizeof(int));
+	int		invflag;
+	
+	i = 1;
+	j = 10;
+	if (!choiseindex)
+		return NULL;
+	if ((strcmp(input, "Starting") == 0))
+		invflag = 0;
+	else if ((strcmp(input, "next") == 0) && (*page < 3))
+		(*page)++;
+	else if ((strcmp(input, "prev") == 0) && (*page > 1))
+		(*page)--;
+	else if (strcmp(input, "exit") == 0)
 		exit(0);
-	else if (input => "0" && input <= "9")
+	else if (input[0] >= '0' && input[0] <= '9')
 		intedinput = atoi(input);
 	else
-		printf("\033[0;31mInvalid input, please try again.\n");
-
-	if (page == 0)
+		invflag = 1;
+	if (*page == 1)
 		j = 0;
 	else
-		j *= page;
-	printf("\033[0;32mWelcome to the Libft Tester!\n");
-	printf("\033[0;32mPlease select a function to test:\n");
-	while (i < 10)
+		j *= *page;
+	printf("\033[0;32m                          Page \033[0;37m%d:\n", *page);
+	while (i < 10 && j < 34)
 	{
-		printf("%d - %s\n", j, functions[j]);
+		printf("%d - \033[0;32m%s\033[0;37m\n", i, functions[j]);
 		j++;
 		i++;
 	}
-	printf("next - Next page\n");
+	printf("\nnext - Next page\n");
 	printf("prev - Previous page\n");
 	printf("exit - Exit program\n");
-	choiseindex = [page,]
+	choiseindex[0] = intedinput;
+	choiseindex[1] = *page;
+	if (invflag == 1)
+		printf("\033[0;31mSomething went wrong!!\nPerhaps invalid input or you're at the limit of the page!\033[0;37m\n");
 	return (choiseindex);
 }
 
-int main()
+int main(void)
 {
 	char	*input;
 	int		*choice;
-	int		*page;
+	int		page;
 	
-	page = 0;
+	page = 1;
+	printf("\033[0;32m                Welcome to the Libft Tester!\n");
+	printf("\033[0;32m              Please select a function to test:\033[0;37m\n");
+	choice = menudisplay("Starting", &page);
+	scanf("%s", input);
 	while (1)
 	{
-		menudisplay(input, page);
-		input = scanf("\033[0;32m>%s", input);
+		system("clear");
+		choice = menudisplay(input, &page);
+		scanf("%s", input);
+		free(choice);
 	}
 	return (0);
 }
