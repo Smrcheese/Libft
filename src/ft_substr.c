@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:37:32 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/06 16:30:44 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:27:33 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[i] = '\0';
 	return (str);
 }
-
-// #include <stdio.h>
-// int	main()
-// {
-// 	char	*str = "Hello World!";
-// 	char	*sub = ft_substr("BONJOUR LES HARICOTS !", 8, 14);
-
-// 	printf("|%s|\n", sub);
-// 	free(sub);
-// 	return (0);
-// }

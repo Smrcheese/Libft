@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/11 17:34:18 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:59:37 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int menudisplay(char *input, int *page)
+int menudisplay(char *input, int *page, int *start)
 {
 	char	*functions[] = 
 	{"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
@@ -26,6 +26,10 @@ int menudisplay(char *input, int *page)
 	"ft_strjoin", "ft_strlcat", "ft_strlcpy", "ft_strlen", "ft_strmapi",
 	"ft_strncmp", "ft_strnstr", "ft_strrchr", "ft_strtrim", "ft_substr",
 	"ft_tolower", "ft_toupper"};
+	char	*bonus[] = 
+	{"ft_lstnew", "ft_lstadd_front", "ft_lstsize", "ft_lstlast",
+	"ft_lstadd_back", "ft_lstdelone", "ft_lstclear", "ft_lstiter",
+	"ft_lstmap"};
 	int		intedinput;
 	int		i;
 	int		j;
@@ -33,9 +37,7 @@ int menudisplay(char *input, int *page)
 	
 	i = 1;
 	j = 10;
-	if ((strcmp(input, "Starting") == 0))
-		invflag = 0;
-	else if ((strcmp(input, "next") == 0) && (*page < 3))
+	if ((strcmp(input, "next") == 0) && (*page < 4))
 		(*page)++;
 	else if ((strcmp(input, "prev") == 0) && (*page > 1))
 		(*page)--;
@@ -49,30 +51,65 @@ int menudisplay(char *input, int *page)
 		j = 0;
 	else
 		j *= *page;
+	printf("\033[0;32m                Welcome to the Libft Tester!\n");
+	printf("\033[0;33m                     Made by sezequie\n");
+	printf("\033[0;32m              Please select a function to test\033[0;37m:\n");
 	printf("\033[0;32m                          Page \033[0;37m%d:\n", *page);
 	while (i < 10 && j < 34)
 	{
 		printf("%d - \033[0;32m%s\033[0;37m\n", i, functions[j]);
+		if (j == 33)
+			printf("next page to see bonus!..\n");
 		j++;
 		i++;
 	}
-	printf("\nnext - Next page\n");
-	printf("prev - Previous page\n");
-	printf("exit - Exit program\n\n");
-	if (invflag == 1)
-		printf("\033[0;31mSomething went wrong!!\nPerhaps invalid input or you're at the limit of the page!\033[0;37m\n\n");
+	if (*page == 4)
+		printf("\033[0;34m                          Bonus!!\n\033[0;37m");
+	while (*page == 4 && bonus[i])
+	{
+		printf("%d - \033[0;32m%s\033[0;37m\n", i, bonus[i]);
+		i++;
+	}
+	
+	if (*page < 4)
+		printf("\nnext - Next page\n");
+	if (*page > 1)
+		printf("prev - Previous page\n");
+	printf("exit - Exit program\n");
+	if (invflag == 1 && *start == 0)
+		printf("\033[0;31mInvalid input or end/start of program!\033[0;37m\n\n");
+	*start = 0;
+	invflag = 0;
 	return (intedinput);
 }
 
 int ft_atoi_tester()
 {
-	printf("atoi it works!");
+	printf("\natoi it works!\n\n");
 	return (1);
 }
 
 int ft_bzero_tester()
 {
-	printf("bzero it works!");
+	printf("\nbzero it works!\n\n");
+	return (1);
+}
+
+int ft_calloc_tester()
+{
+	printf("\ncalloc it works!\n\n");
+	return (1);
+}
+
+int ft_isalnum_tester()
+{
+	printf("\nisalnum it works!\n\n");
+	return (1);
+}
+
+int ft_isalpha_tester()
+{
+	printf("\nisalpha it works!");
 	return (1);
 }
 
@@ -81,19 +118,27 @@ int main(void)
 	char	*input;
 	int		choice;
 	int		page;
-	
+	int		start;
+
+	start = 1;
 	page = 1;
-	printf("\033[0;32m                Welcome to the Libft Tester!\n");
-	printf("\033[0;32m              Please select a function to test\033[0;37m:\n");
-	choice = menudisplay("Starting", &page);
-	printf("\033[0;32m_>\033[0;37m");
-	scanf("%s", input);
-	printf("\n");
 	while (1)
 	{
 		system("clear");
-		choice = menudisplay(input, &page);
-		printf("\nyour choice and current page is: %d, %d\n", choice, page);
+		choice = menudisplay(input, &page, &start);
+		if (page == 1)
+		{
+			if (choice == 1)
+				ft_atoi_tester();
+			else if (choice == 2)
+				ft_bzero_tester();
+			else if (choice == 3)
+				ft_calloc_tester();
+			else if (choice == 4)
+				ft_isalnum_tester();
+			else if (choice == 5)
+				ft_isalpha_tester();
+		}
 		printf("\033[0;32m_>\033[0;37m");
 		scanf("%s", input);
 	}
