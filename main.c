@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/11 17:15:31 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:34:18 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int *menudisplay(char *input, int *page)
+int menudisplay(char *input, int *page)
 {
 	char	*functions[] = 
 	{"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
@@ -29,13 +29,10 @@ int *menudisplay(char *input, int *page)
 	int		intedinput;
 	int		i;
 	int		j;
-	int		*choiseindex = (int *)malloc(2 * sizeof(int));
 	int		invflag;
 	
 	i = 1;
 	j = 10;
-	if (!choiseindex)
-		return NULL;
 	if ((strcmp(input, "Starting") == 0))
 		invflag = 0;
 	else if ((strcmp(input, "next") == 0) && (*page < 3))
@@ -62,17 +59,27 @@ int *menudisplay(char *input, int *page)
 	printf("\nnext - Next page\n");
 	printf("prev - Previous page\n");
 	printf("exit - Exit program\n\n");
-	choiseindex[0] = intedinput;
-	choiseindex[1] = *page;
 	if (invflag == 1)
 		printf("\033[0;31mSomething went wrong!!\nPerhaps invalid input or you're at the limit of the page!\033[0;37m\n\n");
-	return (choiseindex);
+	return (intedinput);
+}
+
+int ft_atoi_tester()
+{
+	printf("atoi it works!");
+	return (1);
+}
+
+int ft_bzero_tester()
+{
+	printf("bzero it works!");
+	return (1);
 }
 
 int main(void)
 {
 	char	*input;
-	int		*choice;
+	int		choice;
 	int		page;
 	
 	page = 1;
@@ -86,9 +93,9 @@ int main(void)
 	{
 		system("clear");
 		choice = menudisplay(input, &page);
+		printf("\nyour choice and current page is: %d, %d\n", choice, page);
 		printf("\033[0;32m_>\033[0;37m");
 		scanf("%s", input);
-		free(choice);
 	}
 	return (0);
 }
