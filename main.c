@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/10 17:27:24 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:23:20 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,49 @@
 int *menudisplay(char *input, int *page)
 {
 	char	**functions;
-	i = 0;
-	functions = "ft_atoi\nft_bzero\nft_calloc\nft_isalnum\n
-	ft_isalpha\nft_isascii\nft_isdigit\nft_isprint\n
-	ft_itoa\nft_memccpy\nft_memchr\nft_memcmp\n
-	ft_memcpy\nft_memmove\nft_memset\nft_putchar_fd\n
-	ft_putendl_fd\nft_putnbr_fd\nft_putstr_fd\nft_split\n
-	ft_strchr\nft_strdup\nft_strjoin\nft_strlcat\nft_strlcpy\n
-	ft_strlen\nft_strmapi\nft_strncmp\nft_strnstr\nft_strrchr\n
-	ft_strtrim\nft_substr\nft_tolower\nft_toupper\n";
-	while (i < 10 && functions)
-	{
-		if (functions != '\n')
-			printf("%c\n", functions[0]);
-		if (i == 9)
-			printf("next - see next page\n");
-			printf("exit - exit program\n");
-			scanf("%s", input);
-		if (input == "next" && page < 3)
-			page++;
-		if (input == "exit")
-			exit(0);
-		if (page == 0)
-		{
-			if (input == 0)
-		}
-			
-		functions++;
-	}
-}
-
-void test_ft_atoi()
-{
-	/*create a string and print it, then print the result of ft_atoi, if the
-	result is the same as the atoi function, print "OK" in green, otherwise print "KO" in red.
-	do more than 3 test*/
+	int		*choiseindex;
+	int		intedinput;
+	int		i;
+	int		j;
 	
-	char *str = "123456789";
-	int result = ft_atoi(str);
-	int result2 = atoi(str);
-	printf("ft_atoi: %d\n", result);
-	printf("atoi: %d\n", result2);
-	if (result == result2)
-		printf("\033[0;32mOK\n");
+	i = 0;
+	j = 10;
+	functions = {"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
+	"ft_isalpha", "ft_isascii", "ft_isdigit", "ft_isprint",
+	"ft_itoa", "ft_memccpy", "ft_memchr", "ft_memcmp", "ft_memcpy",
+	"ft_memmove", "ft_memset", "ft_putchar_fd", "ft_putendl_fd",
+	"ft_putnbr_fd", "ft_putstr_fd", "ft_split", "ft_strchr", "ft_strdup",
+	"ft_strjoin", "ft_strlcat", "ft_strlcpy", "ft_strlen", "ft_strmapi",
+	"ft_strncmp", "ft_strnstr", "ft_strrchr", "ft_strtrim", "ft_substr",
+	"ft_tolower", "ft_toupper"};
+	if (input == "next")
+		page++;
+	else if (input == "prev")
+		page--;
+	else if (input == "exit")
+		exit(0);
+	else if (input => "0" && input <= "9")
+		intedinput = atoi(input);
 	else
-		printf("\033[0;31mKO\n");
+		printf("\033[0;31mInvalid input, please try again.\n");
+
+	if (page == 0)
+		j = 0;
+	else
+		j *= page;
+	printf("\033[0;32mWelcome to the Libft Tester!\n");
+	printf("\033[0;32mPlease select a function to test:\n");
+	while (i < 10)
+	{
+		printf("%d - %s\n", j, functions[j]);
+		j++;
+		i++;
+	}
+	printf("next - Next page\n");
+	printf("prev - Previous page\n");
+	printf("exit - Exit program\n");
+	choiseindex = [page,]
+	return (choiseindex);
 }
 
 int main()
