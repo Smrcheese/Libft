@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/11 18:59:37 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/12 00:06:12 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int menudisplay(char *input, int *page, int *start)
+int	menudisplay(char *input, int *page, int *start)
 {
 	char	*functions[] = 
 	{"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
@@ -28,13 +28,13 @@ int menudisplay(char *input, int *page, int *start)
 	"ft_tolower", "ft_toupper"};
 	char	*bonus[] = 
 	{"ft_lstnew", "ft_lstadd_front", "ft_lstsize", "ft_lstlast",
-	"ft_lstadd_back", "ft_lstdelone", "ft_lstclear", "ft_lstiter",
-	"ft_lstmap"};
+		"ft_lstadd_back", "ft_lstdelone", "ft_lstclear", "ft_lstiter",
+		"ft_lstmap"};
 	int		intedinput;
 	int		i;
 	int		j;
 	int		invflag;
-	
+
 	i = 1;
 	j = 10;
 	if ((strcmp(input, "next") == 0) && (*page < 4))
@@ -70,7 +70,6 @@ int menudisplay(char *input, int *page, int *start)
 		printf("%d - \033[0;32m%s\033[0;37m\n", i, bonus[i]);
 		i++;
 	}
-	
 	if (*page < 4)
 		printf("\nnext - Next page\n");
 	if (*page > 1)
@@ -83,37 +82,37 @@ int menudisplay(char *input, int *page, int *start)
 	return (intedinput);
 }
 
-int ft_atoi_tester()
+int	ft_atoi_tester(void)
 {
 	printf("\natoi it works!\n\n");
 	return (1);
 }
 
-int ft_bzero_tester()
+int	ft_bzero_tester(void)
 {
 	printf("\nbzero it works!\n\n");
 	return (1);
 }
 
-int ft_calloc_tester()
+int	ft_calloc_tester(void)
 {
 	printf("\ncalloc it works!\n\n");
 	return (1);
 }
 
-int ft_isalnum_tester()
+int	ft_isalnum_tester(void)
 {
 	printf("\nisalnum it works!\n\n");
 	return (1);
 }
 
-int ft_isalpha_tester()
+int	ft_isalpha_tester(void)
 {
 	printf("\nisalpha it works!");
 	return (1);
 }
 
-int main(void)
+int	main(void)
 {
 	char	*input;
 	int		choice;
