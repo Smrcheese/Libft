@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/12 17:04:10 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:05:43 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,7 +354,7 @@ int ft_itoa_tester(void)
 	}
 }
 
-//---------------------------------------------------------------------------------------------
+//-------------------------------------------2-------------------------------------------------
 
 int	ft_memchr_tester(void)
 {
@@ -430,6 +430,165 @@ int	ft_memchr_tester(void)
 	}
 }
 
+int ft_memcmp_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Same strings
+	char *s1 = "Hello, world!";
+	char *s2 = "Hello, world!";
+	if (ft_memcmp(s1, s2, strlen(s1) + 1) == memcmp(s1, s2, strlen(s1) + 1))
+	{
+		printf("\033[0;32m✓ ft_memcmp_tester: Test 1 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcmp_tester: Test 1 failed\n");
+		tests_failed++;
+	}
+
+	// Test 2: Different strings
+	char *s3 = "Hello, world";
+	char *s4 = "Hello, there!";
+	if (ft_memcmp(s1, s3, strlen(s1) + 1) == memcmp(s1, s3, strlen(s1) + 1))
+	{
+		printf("\033[0;32m✓ ft_memcmp_tester: Test 2 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcmp_tester: Test 2 failed\n");
+		tests_failed++;
+	}
+
+	// Test 3: Different length
+	if (ft_memcmp(s1, s4, strlen(s1) + 1) == memcmp(s1, s4, strlen(s1) + 1))
+	{
+		printf("\033[0;32m✓ ft_memcmp_tester: Test 3 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcmp_tester: Test 3 failed\n");
+		tests_failed++;
+	}
+
+	// Print summary
+	if (tests_failed == 0)
+	{
+		printf("\033[0;32m✓ ft_memcmp_tester: All tests passed (%d tests)\n", tests_passed);
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcmp_tester: %d/%d tests failed\n", tests_failed, tests_passed + tests_failed);
+		return (0);
+	}
+}
+
+int ft_memcpy_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Copy string to buffer
+	char buf1[100];
+	char *str1 = "Hello, world!";
+	char *result1 = ft_memcpy(buf1, str1, strlen(str1) + 1);
+	if (memcmp(buf1, str1, strlen(str1) + 1) == 0 && result1 == buf1)
+	{
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 1 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 1 failed\n");
+		tests_failed++;
+	}
+
+	// Test 2: Copy buffer to buffer
+	char buf2[100];
+	char buf3[100];
+	memset(buf2, 'A', 100);
+	memset(buf3, 'A', 100);
+	char *result2 = ft_memcpy(buf2, buf3, 100);
+	if (memcmp(buf2, buf3, 100) == 0 && result2 == buf2)
+	{
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 2 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 2 failed\n");
+		tests_failed++;
+	}
+
+	// Test 3: Copy buffer to string
+	char buf4[100];
+	char *str2 = "Hello, world!";
+	memset(buf4, 'A', 100);
+	char *result3 = ft_memcpy(buf4, str2, strlen(str2) + 1);
+	if (memcmp(buf4, str2, strlen(str2) + 1) == 0 && result3 == buf4)
+	{
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 3 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 3 failed\n");
+		tests_failed++;
+	}
+	
+	// Test 4: Copy buffer to buffer with length 0
+	char buf6[100];
+	char buf7[100];
+	memset(buf6, 'A', 100);
+	memset(buf7, 'A', 100);
+	char *result5 = ft_memcpy(buf6, buf7, 0);
+	if (memcmp(buf6, buf7, 100) == 0 && result5 == buf6)
+	{
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 5 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 5 failed\n");
+		tests_failed++;
+	}
+	
+	// Test 5: Copy buffer to buffer with length 1
+	char buf9[100];
+	char buf10[100];
+	memset(buf9, 'A', 100);
+	memset(buf10, 'A', 100);
+	char *result7 = ft_memcpy(buf9, buf10, 1);
+	if (memcmp(buf9, buf10, 100) == 0 && result7 == buf9)
+	{
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 7 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 7 failed\n");
+		tests_failed++;
+	}
+	
+	// print summary
+	
+	if (tests_failed == 0)
+	{
+		printf("\033[0;32m✓ ft_memcpy_tester: All tests passed (%d tests)\n", tests_passed);
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memcpy_tester: %d/%d tests failed\n", tests_failed, tests_passed + tests_failed);
+		return (0);
+	}
+}
+
 int	menudisplay(char *input, int *page, int *start)
 {
 	char	*functions[] = 
@@ -451,26 +610,28 @@ int	menudisplay(char *input, int *page, int *start)
 	int		invflag;
 
 	i = 1;
-	j = 10;
-	if ((strcmp(input, "next") == 0) && (*page < 4))
+	j = 0;
+	if ((strcmp(input, "next") == 0) && (*page < 5))
 		(*page)++;
 	else if ((strcmp(input, "prev") == 0) && (*page > 1))
 		(*page)--;
 	else if (strcmp(input, "exit") == 0)
-		exit(0);
+		return(*page = 0);
 	else if (input[0] >= '1' && input[0] <= '9')
 		intedinput = atoi(input);
 	else
 		invflag = 1;
-	if (*page == 1)
-		j = 0;
-	else
-		j *= *page;
+	if (*page == 2)
+		j = 10;
+	if (*page == 3)
+		j = 20;
+	if (*page == 4)
+		j = 30;
 	printf("\033[0;32m                Welcome to the Libft Tester!\n");
 	printf("\033[0;33m                     Made by sezequie\n");
 	printf("\033[0;32m              Please select a function to test\033[0;37m:\n");
 	printf("\033[0;32m                          Page \033[0;37m%d:\n", *page);
-	while (i < 10 && j < 34)
+	while (*page < 5 && i < 10 && j < 34)
 	{
 		printf("%d - \033[0;32m%s\033[0;37m\n", i, functions[j]);
 		if (j == 33)
@@ -478,11 +639,12 @@ int	menudisplay(char *input, int *page, int *start)
 		j++;
 		i++;
 	}
-	if (*page == 4)
+	if (*page == 5)
 		printf("\033[0;34m                          Bonus!!\n\033[0;37m");
-	while (*page == 4 && bonus[i])
+	i = 0;
+	while (*page == 5 && i < 9)
 	{
-		printf("%d - \033[0;32m%s\033[0;37m\n", i, bonus[i]);
+		printf("%d - \033[0;32m%s\033[0;37m\n", i+1, bonus[i]);
 		i++;
 	}
 	if (*page < 4)
@@ -497,7 +659,7 @@ int	menudisplay(char *input, int *page, int *start)
 	return (intedinput);
 }
 
-int	main(void)
+int	main()
 {
 	char	*input;
 	int		choice;
@@ -506,10 +668,13 @@ int	main(void)
 
 	start = 1;
 	page = 1;
+	input = malloc(sizeof(char) * 10);
 	while (1)
 	{
 		system("clear");
 		choice = menudisplay(input, &page, &start);
+		if (page == 0)
+			break;
 		if (page == 1)
 		{
 			if (choice == 1)
@@ -535,9 +700,14 @@ int	main(void)
 		{
 			if (choice == 1)
 				ft_memchr_tester();
+			if (choice == 2)
+				ft_memcmp_tester();
+			if (choice == 3)
+				ft_memcpy_tester();
 		}
 		printf("\033[0;32m_>\033[0;37m");
 		scanf("%s", input);
 	}
+	free(input);
 	return (0);
 }
