@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:40:36 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/12 22:05:43 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:39:28 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
+#include <errno.h>
 
 int	ft_atoi_tester(void)
 {
@@ -430,7 +432,7 @@ int	ft_memchr_tester(void)
 	}
 }
 
-int ft_memcmp_tester(void)
+int	ft_memcmp_tester(void)
 {
 	int tests_passed = 0;
 	int tests_failed = 0;
@@ -488,7 +490,7 @@ int ft_memcmp_tester(void)
 	}
 }
 
-int ft_memcpy_tester(void)
+int	ft_memcpy_tester(void)
 {
 	int tests_passed = 0;
 	int tests_failed = 0;
@@ -549,12 +551,12 @@ int ft_memcpy_tester(void)
 	char *result5 = ft_memcpy(buf6, buf7, 0);
 	if (memcmp(buf6, buf7, 100) == 0 && result5 == buf6)
 	{
-		printf("\033[0;32m✓ ft_memcpy_tester: Test 5 passed\n");
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 4 passed\n");
 		tests_passed++;
 	}
 	else
 	{
-		printf("\033[0;31m✗ ft_memcpy_tester: Test 5 failed\n");
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 4 failed\n");
 		tests_failed++;
 	}
 	
@@ -566,12 +568,12 @@ int ft_memcpy_tester(void)
 	char *result7 = ft_memcpy(buf9, buf10, 1);
 	if (memcmp(buf9, buf10, 100) == 0 && result7 == buf9)
 	{
-		printf("\033[0;32m✓ ft_memcpy_tester: Test 7 passed\n");
+		printf("\033[0;32m✓ ft_memcpy_tester: Test 5 passed\n");
 		tests_passed++;
 	}
 	else
 	{
-		printf("\033[0;31m✗ ft_memcpy_tester: Test 7 failed\n");
+		printf("\033[0;31m✗ ft_memcpy_tester: Test 5 failed\n");
 		tests_failed++;
 	}
 	
@@ -589,12 +591,432 @@ int ft_memcpy_tester(void)
 	}
 }
 
+int	ft_memmove_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic move
+	char src1[] = "123456789";
+	char dst1[] = "abcdefghi";
+	char *expected1 = memmove(dst1, src1, 5);
+	char *result1 = ft_memmove(dst1, src1, 5);
+	if (memcmp(result1, expected1, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memmove_tester: Test 1 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memmove_tester: Test 1 failed\n");
+		printf("  expected: %s\n", expected1);
+		printf("  got:      %s\n", result1);
+		tests_failed++;
+	}
+
+	// Test 2: Overlapping move
+	char src2[] = "123456789";
+	char dst2[] = "abcdefghi";
+	char *expected2 = memmove(dst2 + 2, dst2, 5);
+	char *result2 = ft_memmove(dst2 + 2, dst2, 5);
+	if (memcmp(result2, expected2, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memmove_tester: Test 2 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memmove_tester: Test 2 failed\n");
+		printf("  expected: %s\n", expected2);
+		printf("  got:      %s\n", result2);
+		tests_failed++;
+	}
+
+	// Test 3: Move to same location
+	char src3[] = "123456789";
+	char dst3[] = "abcdefghi";
+	char *expected3 = memmove(dst3, src3, 0);
+	char *result3 = ft_memmove(dst3, src3, 0);
+	if (memcmp(result3, expected3, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memmove_tester: Test 3 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memmove_tester: Test 3 failed\n");
+		printf("  expected: %s\n", expected3);
+		printf("  got:      %s\n", result3);
+		tests_failed++;
+	}
+
+	// Test 4: Move from same location
+	char src4[] = "123456789";
+	char dst4[] = "abcdefghi";
+	char *expected4 = memmove(dst4, dst4, 5);
+	char *result4 = ft_memmove(dst4, dst4, 5);
+	if (memcmp(result4, expected4, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memmove_tester: Test 4 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memmove_tester: Test 4 failed\n");
+		printf("  expected: %s\n", expected4);
+		printf("  got:      %s\n", result4);
+		tests_failed++;
+	}
+
+	// Print summary
+	if (tests_failed == 0)
+	{
+		printf("\033[0;32m✓ ft_memmove_tester: All tests passed (%d tests)\n", tests_passed);
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memmove_tester: %d/%d tests failed\n", tests_failed, tests_passed + tests_failed);
+		return (0);
+	}
+}
+
+int	ft_memset_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic set
+	char str1[] = "123456789";
+	char *expected1 = memset(str1, 'a', 5);
+	char *result1 = ft_memset(str1, 'a', 5);
+	if (memcmp(result1, expected1, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memset_tester: Test 1 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memset_tester: Test 1 failed\n");
+		printf("  expected: %s\n", expected1);
+		printf("  got:      %s\n", result1);
+		tests_failed++;
+	}
+
+	// Test 2: Set to zero
+	char str2[] = "123456789";
+	char *expected2 = memset(str2, 0, 5);
+	char *result2 = ft_memset(str2, 0, 5);
+	if (memcmp(result2, expected2, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memset_tester: Test 2 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memset_tester: Test 2 failed\n");
+		printf("  expected: %s\n", expected2);
+		printf("  got:      %s\n", result2);
+		tests_failed++;
+	}
+
+	// Test 3: Set entire string
+	char str3[] = "123456789";
+	char *expected3 = memset(str3, 'a', 9);
+	char *result3 = ft_memset(str3, 'a', 9);
+	if (memcmp(result3, expected3, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memset_tester: Test 3 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memset_tester: Test 3 failed\n");
+		printf("  expected: %s\n", expected3);
+		printf("  got:      %s\n", result3);
+		tests_failed++;
+	}
+
+	// Test 4: Set zero bytes
+	char str4[] = "123456789";
+	char *expected4 = memset(str4, 'a', 0);
+	char *result4 = ft_memset(str4, 'a', 0);
+	if (memcmp(result4, expected4, 10) == 0)
+	{
+		printf("\033[0;32m✓ ft_memset_tester: Test 4 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memset_tester: Test 4 failed\n");
+		printf("  expected: %s\n", expected4);
+		printf("  got:      %s\n", result4);
+		tests_failed++;
+	}
+
+	// Print summary
+	if (tests_failed == 0)
+	{
+		printf("\033[0;32m✓ ft_memset_tester: All tests passed (%d tests)\n", tests_passed);
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_memset_tester: %d/%d tests failed\n", tests_failed, tests_passed + tests_failed);
+		return (0);
+	}
+}
+
+int ft_putchar_fd_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic output
+	int fd1[2];
+	pipe(fd1);
+	printf("\n");
+	putchar('a');
+	fflush(stdout);
+	ft_putchar_fd('a', fd1[1]);
+	close(fd1[1]);
+	char buf1[2];
+	read(fd1[0], buf1, 1);
+	close(fd1[0]);
+	printf(" \033[0;33m<-- char printed\n\n");
+	if (buf1[0] == 'a')
+	{
+		printf("\033[0;32m✓ ft_putchar_fd_tester: Test 1 passed\n");
+		tests_passed++;
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_putchar_fd_tester: Test 1 failed\n");
+		printf("  expected: a\n");
+		tests_failed++;
+		return (0);
+	}
+}
+
+int ft_putendl_fd_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic output
+	int fd1[2];
+	pipe(fd1);
+	printf("\n");
+	puts("hello i'm a string!");
+	fflush(stdout);
+	ft_putendl_fd("hello i'm a string!", fd1[1]);
+	close(fd1[1]);
+	char buf1[20];
+	read(fd1[0], buf1, 19);
+	close(fd1[0]);
+	buf1[19] = '\0';
+	printf(" \033[0;33mI should be under the string!\n\n");
+	if (strcmp(buf1, "hello i'm a string!") == 0)
+	{
+		printf("\033[0;32m✓ ft_putendl_fd_tester: Test 1 passed\n");
+		tests_passed++;
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_putendl_fd_tester: Test 1 failed\n");
+		printf("  expected: hello i'm a string!\\n\n");
+		printf("  got:      %s", buf1);
+		tests_failed++;
+		return (0);
+	}
+}
+
+int ft_putnbr_fd_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic output
+	int fd1[2];
+	pipe(fd1);
+	printf("\n");
+	putchar('1');
+	fflush(stdout);
+	ft_putnbr_fd(1, fd1[1]);
+	close(fd1[1]);
+	char buf1[2];
+	read(fd1[0], buf1, 1);
+	close(fd1[0]);
+	printf(" \033[0;33m <-- number printed\n\n");
+	if (buf1[0] == '1')
+	{
+		printf("\033[0;32m✓ ft_putnbr_fd_tester: Test 1 passed\n");
+		tests_passed++;
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_putnbr_fd_tester: Test 1 failed\n");
+		printf("  expected: 1\n");
+		printf("  got:      %c\n", buf1[0]);
+		tests_failed++;
+		return (0);
+	}
+}
+
+int ft_putstr_fd_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic output
+	int fd1[2];
+	pipe(fd1);
+	printf("\n");
+	puts("hello");
+	fflush(stdout);
+	ft_putstr_fd("hello", fd1[1]);
+	close(fd1[1]);
+	char buf1[6];
+	read(fd1[0], buf1, 5);
+	close(fd1[0]);
+	buf1[5] = '\0';
+	printf(" \033[0;33mis hello printed above?\n\n");
+	if (strcmp(buf1, "hello") == 0)
+	{
+		printf("\033[0;32m✓ ft_putstr_fd_tester: Test 1 passed\n");
+		tests_passed++;
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_putstr_fd_tester: Test 1 failed\n");
+		printf("  expected: hello\n");
+		printf("  got:      %s\n", buf1);
+		tests_failed++;
+		return (0);
+	}
+}
+
+//-------------------------------------------3-------------------------------------------------
+
+int ft_split_tester(void)
+{
+	int tests_passed = 0;
+	int tests_failed = 0;
+
+	// Test 1: Basic split
+	char *str1 = "This is a test";
+	char **expected1 = (char *[]){"This", "is", "a", "test", NULL};
+	char **result1 = ft_split(str1, ' ');
+	if (strcmp(result1[0], expected1[0]) == 0 && strcmp(result1[1], expected1[1]) == 0 &&
+		strcmp(result1[2], expected1[2]) == 0 && strcmp(result1[3], expected1[3]) == 0 &&
+		result1[4] == expected1[4])
+	{
+		printf("\033[0;32m✓ ft_split_tester: Test 1 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_split_tester: Test 1 failed\n");
+		printf("  expected: %s %s %s %s (null)\n", expected1[0], expected1[1], expected1[2], expected1[3]);
+		printf("  got:      %s %s %s %s (%s)\n", result1[0], result1[1], result1[2], result1[3], result1[4]);
+		tests_failed++;
+	}
+
+	// Test 2: Empty string
+	char *str2 = "";
+	char **expected2 = (char *[]){NULL};
+	char **result2 = ft_split(str2, ' ');
+	if (result2[0] == expected2[0])
+	{
+		printf("\033[0;32m✓ ft_split_tester: Test 2 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_split_tester: Test 2 failed\n");
+		printf("  expected: (null)\n");
+		printf("  got:      %s\n", result2[0]);
+		tests_failed++;
+	}
+
+	// Test 3: Single character delimiter
+	char *str3 = "This,is,a,test";
+	char **expected3 = (char *[]){"This", "is", "a", "test", NULL};
+	char **result3 = ft_split(str3, ',');
+	if (strcmp(result3[0], expected3[0]) == 0 && strcmp(result3[1], expected3[1]) == 0 &&
+		strcmp(result3[2], expected3[2]) == 0 && strcmp(result3[3], expected3[3]) == 0 &&
+		result3[4] == expected3[4])
+	{
+		printf("\033[0;32m✓ ft_split_tester: Test 3 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_split_tester: Test 3 failed\n");
+		printf("  expected: %s %s %s %s (null)\n", expected3[0], expected3[1], expected3[2], expected3[3]);
+		printf("  got:      %s %s %s %s (%s)\n", result3[0], result3[1], result3[2], result3[3], result3[4]);
+		tests_failed++;
+	}
+
+	// Test 4: Multiple character delimiter
+	char *str4 = "This---is---a---test";
+	char **expected4 = (char *[]){"This", "is", "a", "test", NULL};
+	char **result4 = ft_split(str4, '-');
+	if (strcmp(result4[0], expected4[0]) == 0 && strcmp(result4[1], expected4[1]) == 0 &&
+		strcmp(result4[2], expected4[2]) == 0 && strcmp(result4[3], expected4[3]) == 0 &&
+		result4[4] == expected4[4])
+	{
+		printf("\033[0;32m✓ ft_split_tester: Test 4 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_split_tester: Test 4 failed\n");
+		printf("  expected: %s %s %s %s (null)\n", expected4[0], expected4[1], expected4[2], expected4[3]);
+		printf("  got:      %s %s %s %s (%s)\n", result4[0], result4[1], result4[2], result4[3], result4[4]);
+		tests_failed++;
+	}
+
+	// Test 5: Delimiter not found
+	char *str5 = "This is a test";
+	char **expected5 = (char *[]){"This is a test", NULL};
+	char **result5 = ft_split(str5, '-');
+	if (strcmp(result5[0], expected5[0]) == 0 && result5[1] == expected5[1])
+	{
+		printf("\033[0;32m✓ ft_split_tester: Test 5 passed\n");
+		tests_passed++;
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_split_tester: Test 5 failed\n");
+		printf("  expected: %s (null)\n", expected5[0]);
+		printf("  got:      %s (%s)\n", result5[0], result5[1]);
+		tests_failed++;
+	}
+
+	// Print summary
+	if (tests_failed == 0)
+	{
+		printf("\033[0;32m✓ ft_split_tester: All tests passed (%d tests)\n", tests_passed);
+		return (1);
+	}
+	else
+	{
+		printf("\033[0;31m✗ ft_split_tester: %d/%d tests failed\n", tests_failed, tests_passed + tests_failed);
+		return (0);
+	}
+}
+
 int	menudisplay(char *input, int *page, int *start)
 {
 	char	*functions[] = 
 	{"ft_atoi", "ft_bzero", "ft_calloc", "ft_isalnum",
 	"ft_isalpha", "ft_isascii", "ft_isdigit", "ft_isprint",
-	"ft_itoa", "ft_memccpy", "ft_memchr", "ft_memcmp", "ft_memcpy",
+	"ft_itoa", "ft_memchr", "ft_memcmp", "ft_memcpy",
 	"ft_memmove", "ft_memset", "ft_putchar_fd", "ft_putendl_fd",
 	"ft_putnbr_fd", "ft_putstr_fd", "ft_split", "ft_strchr", "ft_strdup",
 	"ft_strjoin", "ft_strlcat", "ft_strlcpy", "ft_strlen", "ft_strmapi",
@@ -604,6 +1026,8 @@ int	menudisplay(char *input, int *page, int *start)
 	{"ft_lstnew", "ft_lstadd_front", "ft_lstsize", "ft_lstlast",
 		"ft_lstadd_back", "ft_lstdelone", "ft_lstclear", "ft_lstiter",
 		"ft_lstmap"};
+	int		bonuslen = 9;
+	int		functionlen = 33;
 	int		intedinput;
 	int		i;
 	int		j;
@@ -622,16 +1046,16 @@ int	menudisplay(char *input, int *page, int *start)
 	else
 		invflag = 1;
 	if (*page == 2)
-		j = 10;
+		j = 9;
 	if (*page == 3)
-		j = 20;
+		j = 18;
 	if (*page == 4)
-		j = 30;
+		j = 27;
 	printf("\033[0;32m                Welcome to the Libft Tester!\n");
 	printf("\033[0;33m                     Made by sezequie\n");
 	printf("\033[0;32m              Please select a function to test\033[0;37m:\n");
 	printf("\033[0;32m                          Page \033[0;37m%d:\n", *page);
-	while (*page < 5 && i < 10 && j < 34)
+	while (*page < 5 && i < 10 && j < functionlen)
 	{
 		printf("%d - \033[0;32m%s\033[0;37m\n", i, functions[j]);
 		if (j == 33)
@@ -641,13 +1065,14 @@ int	menudisplay(char *input, int *page, int *start)
 	}
 	if (*page == 5)
 		printf("\033[0;34m                          Bonus!!\n\033[0;37m");
-	i = 0;
-	while (*page == 5 && i < 9)
+	while (*page == 5 && j < bonuslen)
 	{
-		printf("%d - \033[0;32m%s\033[0;37m\n", i+1, bonus[i]);
-		i++;
+		printf("%d - \033[0;32m%s\033[0;37m\n", j+1, bonus[j]);
+		if (j == 8)
+			printf("\n");
+		j++;
 	}
-	if (*page < 4)
+	if (*page < 5)
 		printf("\nnext - Next page\n");
 	if (*page > 1)
 		printf("prev - Previous page\n");
@@ -704,6 +1129,23 @@ int	main()
 				ft_memcmp_tester();
 			if (choice == 3)
 				ft_memcpy_tester();
+			if (choice == 4)
+				ft_memmove_tester();
+			if (choice == 5)
+				ft_memset_tester();
+			if (choice == 6)
+				ft_putchar_fd_tester();
+			if (choice == 7)
+				ft_putendl_fd_tester();
+			if (choice == 8)
+				ft_putnbr_fd_tester();
+			if (choice == 9)
+				ft_putstr_fd_tester();
+		}
+		if (page == 3)
+		{
+			if (choice == 1)
+				ft_split_tester();
 		}
 		printf("\033[0;32m_>\033[0;37m");
 		scanf("%s", input);
