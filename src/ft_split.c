@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:32 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/09 18:36:38 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/14 01:52:46 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static	int	splitcount(const char *check, char c)
 {
 	int	bo;
-	int	k;
 	int	l;
+	int	k;
 
 	bo = 0;
-	k = 0;
 	l = 0;
+	k = 0;
 	while (check && check[k] != '\0')
 	{
 		if (bo == 0 && check[k] != c)
@@ -37,17 +37,17 @@ static	int	splitcount(const char *check, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**splitted;
-	size_t	i;
 	int		o;
+	size_t	i;
 	size_t	p;
+	char	**splitted;
 
 	o = -1;
 	i = 0;
 	p = 0;
-	splitted = malloc((splitcount(s, c) + 1) * sizeof(char *));
+	splitted = (char **)malloc(sizeof(char *) * (splitcount(s, c) + 1));
 	if (!splitted || !s)
-		return (0);
+		return (NULL);
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && o < 0)
@@ -59,6 +59,6 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
-	splitted[p] = 0;
+	splitted[p] = NULL;
 	return (splitted);
 }
