@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:32 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/14 01:52:46 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:52:46 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,3 +62,17 @@ char	**ft_split(char const *s, char c)
 	splitted[p] = NULL;
 	return (splitted);
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	char **str2 = ft_split(str, '5');
+	printf("%s\n", str2[0]);
+	printf("%s\n", str2[1]);
+	printf("%s\n", str2[2]);
+	printf("%s\n", str2[3]);
+	printf("%s\n", str2[4]);
+	printf("%s\n", str2[5]);
+}
+*/

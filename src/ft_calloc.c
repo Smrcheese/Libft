@@ -22,3 +22,15 @@ void	*ft_calloc(size_t n, size_t size)
 	ft_bzero(ptr, n * size);
 	return (ptr);
 }
+
+/*
+int main()
+{
+	char *str;
+	int n = 5;
+	int size = 10;
+
+	str = ft_calloc(n, size);
+	printf("%s\n", str);
+}
+*/

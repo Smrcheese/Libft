@@ -27,3 +27,12 @@ char	*ft_strrchr(const char *str, int c)
 		return ((char *)str);
 	return (last);
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	printf("%s\n", ft_strrchr(str, '0'));
+	printf("%s\n", strrchr(str, '0'));
+}
+*/

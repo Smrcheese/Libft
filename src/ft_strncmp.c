@@ -24,3 +24,13 @@ int	ft_strncmp(const char *str1, char *str2, size_t n)
 		return (0);
 	return (*(unsigned char *)str1 - *(unsigned char *)str2);
 }
+
+/*
+int main()
+{
+	char str1[] = "1234567890";
+	char str2[] = "1234567890";
+	printf("%d\n", ft_strncmp(str1, str2, 5));
+	printf("%d\n", strncmp(str1, str2, 5));
+}
+*/

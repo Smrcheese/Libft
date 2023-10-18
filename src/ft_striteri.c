@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:52:57 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/08 18:53:08 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:54:04 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		i++;
 	}
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	ft_striteri(str, &ft_putchar_fd);
+}
+*/

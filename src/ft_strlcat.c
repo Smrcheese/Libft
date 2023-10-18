@@ -38,3 +38,13 @@ size_t	ft_strlcat(char *dst, const char *source, size_t dstsize)
 	dst[i] = '\0';
 	return (j);
 }
+
+/*
+int main()
+{
+	char dst[20] = "1234567890";
+	char source[20] = "1234567890";
+	printf("%lu\n", ft_strlcat(dst, source, 5));
+	printf("%s\n", dst);
+}
+*/

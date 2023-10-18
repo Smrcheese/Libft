@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:43:37 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/06 18:11:55 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:56:04 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (ft_substr(s1, 0, len));
 }
 
-// #include <stdio.h>
-// int main()
-// {
-// 	char *s1 = "...ola...";
-// 	char *set = ".";
-
-// 	printf("%s\n", ft_strtrim(s1, set));
-// }
+/*
+int main()
+{
+	char *s1 = "1234567890";
+	char *set = "1234567890";
+	printf("%s\n", ft_strtrim(s1, set));
+}
+*/

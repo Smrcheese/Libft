@@ -25,3 +25,12 @@ void	*ft_memset(void *str, int c, size_t size)
 	}
 	return (str);
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	printf("%s\n", ft_memset(str, 'a', 5));
+	printf("%s\n", memset(str, 'a', 5));
+}
+*/

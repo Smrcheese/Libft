@@ -20,3 +20,12 @@ char	*ft_strchr(const char *str, int c)
 		return ((char *)str);
 	return (0);
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	printf("%s\n", ft_strchr(str, '5'));
+	printf("%s\n", strchr(str, '5'));
+}
+*/

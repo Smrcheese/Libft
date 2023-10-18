@@ -29,3 +29,11 @@ char	*ft_strdup(const char *str)
 	dup[i] = str[i];
 	return (dup);
 }
+
+/*
+int main()
+{
+	char *str = "1234567890";
+	printf("%s\n", ft_strdup(str));
+}
+*/

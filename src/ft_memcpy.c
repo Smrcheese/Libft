@@ -31,3 +31,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*
+int main()
+{
+	char str1[] = "1234567890";
+	char str2[] = "1234567890";
+	printf("%s\n", ft_memcpy(str1, str2, 5));
+	printf("%s\n", memcpy(str1, str2, 5));
+}
+*/

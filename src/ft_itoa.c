@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:38:38 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/08 18:45:22 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:46:43 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,11 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 	return (str);
 }
+
+/*
+int main()
+{
+	printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(2147483647));
+}
+*/

@@ -24,3 +24,12 @@ void	ft_bzero(void *str, size_t n)
 		n--;
 	}
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	ft_bzero(str, 5);
+	printf("%s\n", str);
+}
+*/

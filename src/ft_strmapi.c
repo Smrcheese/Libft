@@ -6,7 +6,7 @@
 /*   By: sezequie <sezequie@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:47:31 by sezequie          #+#    #+#             */
-/*   Updated: 2023/10/08 18:51:55 by sezequie         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:55:17 by sezequie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	*ptr = '\0';
 	return (str);
 }
+
+/*
+int main()
+{
+	char *s = "1234567890";
+	printf("%s\n", ft_strmapi(s, &ft_toupper));
+}
+*/

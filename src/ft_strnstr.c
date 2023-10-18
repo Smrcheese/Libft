@@ -36,3 +36,13 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	}
 	return (0);
 }
+
+/*
+int main()
+{
+	char str[] = "1234567890";
+	char to_find[] = "456";
+	printf("%s\n", ft_strnstr(str, to_find, 10));
+	printf("%s\n", strnstr(str, to_find, 10));
+}
+*/

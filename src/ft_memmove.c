@@ -26,3 +26,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_memcpy(dest, src, n);
 	return (dest);
 }
+
+/*
+int main()
+{
+	char str1[] = "1234567890";
+	char str2[] = "1234567890";
+	printf("%s\n", ft_memmove(str1, str2, 5));
+	printf("%s\n", memmove(str1, str2, 5));
+}
+*/
