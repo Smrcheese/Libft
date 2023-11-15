@@ -24,13 +24,27 @@ void	*ft_calloc(size_t n, size_t size)
 }
 
 /*
-int main()
+int	main()
 {
-	char *str;
-	int n = 5;
-	int size = 10;
+	size_t	num_elements = 5;
+	size_t	element_size = sizeof(int);
 
-	str = ft_calloc(n, size);
-	printf("%s\n", str);
+	// Allocate and initialize memory for an array of 5 integers
+	int *arr = (int *)ft_calloc(num_elements, element_size);
+	// Check if memory allocation was successful
+	if (arr != NULL)
+	{
+		// Access and modify the elements of the array
+		for (size_t i = 0; i < num_elements; i++)
+			arr[i] = i + 1;
+		// Print the elements of the array
+		for (size_t i = 0; i < num_elements; i++)
+			printf("%d ", arr[i]);
+		// Free the allocated memory when done
+		free(arr);
+	}
+	else
+		printf("Memory allocation failed\n");
+	return 0;
 }
 */
